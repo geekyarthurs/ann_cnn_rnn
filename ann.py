@@ -52,6 +52,34 @@ from tensorflow.keras.layers import Dense
 
 
 classifier = Sequential()
+#1st layer
+classifier.add(Dense(units=6, kernel_initializer='uniform', activation='relu', input_shape=(11,)))
+#2nd layer
+classifier.add(Dense(units=6, kernel_initializer='uniform', activation='relu'))
 
-classifier.add(Dense()
+#Final layer
+classifier.add(Dense(units=1, kernel_initializer='uniform', activation='sigmoid'))
+
+classifier.compile(optimizer = 'adam', loss = 'binary_crossentropy', metrics = ['accuracy'])
+
+classifier.fit(X_train, y_train, batch_size=10, epochs=100)
+
+
+y_pred = classifier.predict(X_test)
+
+y_pred = y_pred > 0.5
+
+from sklearn.metrics import confusion_matrix
+cm = confusion_matrix(y_test, y_pred)
+
+
+
+
+
+
+
+
+
+
+
 

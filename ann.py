@@ -1,15 +1,5 @@
 # Artificial Neural Network
 
-# Installing Theano
-# pip install --upgrade --no-deps git+git://github.com/Theano/Theano.git
-
-# Installing Tensorflow
-# pip install tensorflow
-
-# Installing Keras
-# pip install --upgrade keras
-
-# Part 1 - Data Preprocessing
 
 # Importing the libraries
 import numpy as np
@@ -57,6 +47,11 @@ X_test = sc.transform(X_test)
 
 # Importing the Keras libraries and packages
 import keras
-from keras.models import Sequential
-from keras.layers import Dense
+from tensorflow.keras.models import Sequential
+from tensorflow.keras.layers import Dense
+
+
+classifier = Sequential()
+
+classifier.add(Dense()
 

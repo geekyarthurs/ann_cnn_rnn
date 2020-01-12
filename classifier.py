@@ -19,7 +19,7 @@ X = dataset[: , 0:4].astype(float)
 
 y = dataset[: , 4]
 
-from sklearn.preprocessing import LabelEncoder
+from sklearn.preprocessing import LabelEncoder,StandardScaler
 from keras.utils import np_utils
 
 
@@ -29,6 +29,8 @@ encoded_y = encoder.transform(y)
 
 dummy_y = np_utils.to_categorical(encoded_y)
 
+sc = StandardScaler()
+X = sc.fit_transform(X)
 
 from tensorflow.keras.models import Sequential
 from tensorflow.keras.layers import Dense

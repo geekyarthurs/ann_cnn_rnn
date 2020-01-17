@@ -60,7 +60,7 @@ classifier.add(Dense(units=1,  activation='sigmoid'))
 
 classifier.compile(optimizer='adam', loss='binary_crossentropy',metrics=['accuracy'])
 
-classifier.fit(X, y, batch_size=16, epochs=100)
+classifier.fit(X, y, batch_size=5, epochs=100)
 
 
 # %% TESTING

@@ -10,6 +10,7 @@ dataFrame = pd.read_csv("ex1data2.txt", header=None)
 #ASSIGNING X AND y values to train our model.
 X = dataFrame[[0,1]].values
 y = dataFrame[2].values.reshape((-1,1))
+X = (X - np.mean(X,axis=0)) / np.std(X,axis=0)
 y = (y - np.mean(y)) / np.std(y)
 
 #plt.scatter(X,y, c="red", label="training data")

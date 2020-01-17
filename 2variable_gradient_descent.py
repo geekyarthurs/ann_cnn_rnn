@@ -10,6 +10,8 @@ dataFrame = pd.read_csv("ex1data2.txt", header=None)
 #ASSIGNING X AND y values to train our model.
 X = dataFrame[[0,1]].values
 y = dataFrame[2].values.reshape((-1,1))
+
+
 X = (X - np.mean(X,axis=0)) / np.std(X,axis=0)
 y = (y - np.mean(y)) / np.std(y)
 
@@ -23,25 +25,25 @@ X = np.hstack((np.ones((X.shape[0],1)), X))
 # Setting both weight to 0 initially.
 w = np.zeros(X[0].size)
 
-J1 = J2 = J3 = 0
+
 errors = []
 #learning rate
 alpha = 0.1
-
 m = X.shape[0]
-for _ in range(100):
+for _ in range(300):
 
-    J1 = J2 = J3 =  0
+    j = np.zeros(X[0].size).astype('float64')
     for i in range(m):
         
-         J1  += (X[i] @ w - y[i].item()) * X[i][0]
-         J2  += (X[i] @ w - y[i].item()) * X[i][1] 
-         J3  += (X[i] @ w - y[i].item()) * X[i][2]
+         for k in range(w.size):
+             j[k]  += (X[i] @ w - y[i].item()) * X[i][k]
+             
          
-   
-    w[0] = w[0] - alpha * ( 1/ m ) * J1
-    w[1] = w[1] - alpha * ( 1/ m ) * J2
-    w[2] = w[2] - alpha * ( 1/ m ) * J3
+    errors.append((X[i] @ w - y[i].item()) ** 2)
+    
+    for k in range(w.size):
+        w[k] = w[k] - alpha * ( 1/ m ) * j[k]
+        
     print(f"{w[0]} and {w[1]}")   
        
 
